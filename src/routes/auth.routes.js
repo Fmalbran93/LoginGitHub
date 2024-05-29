@@ -28,3 +28,4 @@ authRouter.get("/failedRegister", (req, res) => {
 });
 
 export default authRouter;
+

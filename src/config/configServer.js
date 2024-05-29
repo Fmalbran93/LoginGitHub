@@ -1,13 +1,18 @@
-import mongoose from "mongoose";
+import { connect } from "mongoose";
 import "dotenv/config";
 
-const URI = process.env.URI;
-const connectToDB = () => {
+
+import mongoose from 'mongoose';
+
+const connectToDB = async () => {
   try {
-    mongoose.connect("mongodb+srv://fmalbran93:coderhouse@clustercoder.nqsqgsl.mongodb.net/E-commerce?retryWrites=true&w=majority&appName=ClusterCoder");
-    console.log("connected to MongoDB");
+    await mongoose.connect(process.env.URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Connected to MongoDB');
   } catch (error) {
-    console.log(error);
+    console.error('Error connecting to MongoDB:', error);
   }
 };
 

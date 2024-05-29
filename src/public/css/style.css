@@ -11,6 +11,7 @@ html {
 
 body {
   background: #0f0f20;
+  color: #ffffff;
 }
 
 .nav-b {
@@ -168,4 +169,59 @@ body {
 
 .drop__content a:hover {
   background-color: #202046;
+}
+
+/* Estilos para el formulario de login */
+.login-form {
+  max-width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #181833;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(61, 61, 131, 0.5);
+}
+
+.login-form h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.login-form .form-label {
+  color: #ffffff;
+}
+
+.login-form .form-control {
+  background-color: #0f0f20;
+  border: 1px solid #3d3d83;
+  color: #ffffff;
+}
+
+.login-form .form-control::placeholder {
+  color: #b1b1b1;
+}
+
+.login-form .btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.login-form .btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.login-form .btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.login-form .btn-github {
+  background-color: #333;
+  color: #fff;
+}
+
+.login-form .btn-github:hover {
+  background-color: #24292e;
+  color: #ffffff
 }

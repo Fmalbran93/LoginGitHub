@@ -3,30 +3,33 @@ const btnCartFinal = document.getElementById("cartFinal");
 const modalBody = document.getElementById("modalBody");
 const arrayProducts = Array.from(products);
 
+
+const updateCart = () => {
+  fetch("http://localhost:8080/products/inCart")
+    .then(response => response.json())
+    .then(data => {
+      const products = data.productsInCart.map((product, index) => `
+        <div class="cart-product rounded p-2 mb-2 mt-2" key=${index}>
+          <h6 class="text-warning text-center text-uppercase">${product.title}</h6>
+          <p>Quantity: ${product.quantity}</p>
+          <p>Price: ${product.price}</p>
+        </div>
+      `).join('');
+      modalBody.innerHTML = products.length ? products : '<h3 class="cart-empty">Cart is empty</h3>';
+    });
+};
+
 const productsInCart = () => {
   fetch("http://localhost:8080/products/inCart")
     .then((response) => response.json())
     .then((data) => {
       if (data.cartLength > 0) {
-        let products = "";
-        data.productsInCart.forEach((product, index) => {
-          products += `
-          <div ${(key = index)} class="bg__cart-prod rounded p-2 mb-2 mt-2">
-          <h6 class="d-grid text-warning text-center text-uppercase"> ${
-            product.title
-          }<span class="mt-2 text-warning"><h6>
-          <h6>Cantidad: ${product.quantity}</h6>
-          <h6>Precio: ${product.price}</h6>
-          </div>
-          `;
-        });
-        modalBody.innerHTML = products;
+        updateCart();
       } else {
         modalBody.innerHTML = `<h3 class="fs-6"> no hay productos en el carrito </h3>`;
       }
     });
 };
-
 arrayProducts.forEach((product) => {
   product.addEventListener("click", () => {
     const stock = Number(product.getAttribute("data-value"));
